@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>
+            javascript
+        </title>
+    </head>
+    <body>
+        <script>
+            function getnumber() 
+            {
+                let number = prompt("숫자를 입력해주세요");
+                if (isNaN(number) != false || number == '') 
+                {
+                    getnumber();
+                } 
+                else if (isNaN(number) == false && (1 > number || number > 100))
+                { 
+                    alert("1이상 100이하를 넣어주세요");
+                    getnumber();
+                }
+                else (isNaN(number) == false && (1 <= number || number <= 100))
+                { 
+                    for (var i = 1;i <= 100; i++) 
+                    {
+                        console.log(i);
+                    }
+                }
+            }
+            getnumber();
+
+//            notmach();
+/*
+            function notmach()
+            {
+                let numbers = prompt("1이상 100이하를 넣어주세요");
+            }*/
+        </script>
+    </body>
+</html>
