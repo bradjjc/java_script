@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <style>
+        span
+        {
+            display: inline-block;
+            width: 200px;
+            height: 80px;
+            text-align: center;
+            line-height: 80px;
+            margin-left: 10px;
+            border: 1px solid black;
+            cursor: pointer;
+        }
+        .gray
+        {
+            background-color: gray;
+            color: white;
+        }
+        .over
+        {
+            background-color: white;
+            color: black;
+        }
+        .click
+        {
+            background-color: red;
+            color: black;
+        }
+
+
+    </style>
+
+    <body onload="gray();">
+        <span id="bt1" onmouseover="clicker('bt1');" onclick="clred('bt1')">html</span>
+        <span id="bt2" onmouseover="clicker('bt2');" onclick="clred('bt2')">CSS</span>
+        <span id="bt3" onmouseover="clicker('bt3');" onclick="clred('bt3')">javastript</span>
+
+
+        <script>
+            function gray()
+            {
+                document.getElementById("bt1").className = "gray";
+                document.getElementById("bt2").className = "gray";
+                document.getElementById("bt3").className = "gray";
+            }
+
+            function clicker(str)
+            {
+                gray();
+                document.getElementById(str).className = "over";
+            }
+
+            function clred(str)
+            {
+                gray();
+                document.getElementById(str).className = "click";
+            }
+
+
+
+            
+        </script>
+    </body>
+</html>

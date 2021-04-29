@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <style>
+
+        .hidden 
+        {
+            display: none;
+        }
+
+        .view 
+        {
+            display: block;
+        }
+
+        #text
+        {
+            font-size: 200px;
+            margin-top: 30%;
+            margin-left: 30%;
+        }
+
+
+    </style>
+
+    <body onload="first();">
+        <div id="form" class="hidden">
+            <div id="text"></div>
+            <button onclick="setcolor('#ff0000')" class="box">빨강</button>
+            <button onclick="setcolor('#0000ff')" class="box">파랑</button>
+            <button onclick="setcolor('#00ff00')" class="box">초록</button>
+        </div>
+
+        <script>
+
+            function first() 
+            {
+                let text = prompt('택스트값을 입력해주세요');
+                if (text == '') 
+                {
+                    first();
+                } else 
+                {
+                    document
+                        .getElementById("text")
+                        .innerHTML = text;
+                    document
+                        .getElementById("form")
+                        .className = "View";
+
+                }
+            }
+
+            function setcolor(color) 
+            {
+                if (color == "#ff0000") 
+                {
+                    alert("빨간색으로 면경됩니다")
+                } else if (color == "#0000ff") 
+                {
+                    alert("파란색으로 면경됩니다")
+                } else if (color == "#00ff00") 
+                {
+                    alert("초록색으로 면경됩니다")
+                }
+                document
+                    .getElementById("text")
+                    .style
+                    .color = color;
+            }
+            
+        </script>
+    </body>
+</html>
