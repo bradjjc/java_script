@@ -1,0 +1,99 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <style>
+        button 
+        {
+            display: inline-block;
+            width: 200px;
+            height: 80px;
+            text-align: center;
+            line-height: 80px;
+            margin-left: 10px;
+            border: 1px solid black;
+            cursor: pointer;
+            border-radius: 40px;
+        }
+        .gray 
+        {
+            background-color: rgb(97, 97, 97);
+            color: white;
+        }
+        .white
+        {
+            background-color: white;
+            color: black;
+        }
+        .red
+        {
+            background-color: red;
+            color: white;
+        }
+        .yellow
+        {
+            background-color: yellow;
+            color: black;
+        }
+
+    </style>
+    <body>
+        <button id="btn1">HTML</button>
+        <button id="btn2">CSS</button>
+        <button id="btn3">javacript</button>
+
+        <script>
+            $(function()
+            {
+                $("button").attr("class","gray");
+                $("#btn1").on("click",function(){
+                    $("button").attr("class","gray");
+                    $(this).attr("class","white");
+                });
+                $("button").attr("class","gray");
+                $("#btn2").on("click",function(){
+                    $("button").attr("class","gray");
+                    $(this).attr("class","white");
+                });
+                $("button").attr("class","gray");
+                $("#btn3").on("click",function(){
+                    $("button").attr("class","gray");
+                    $(this).attr("class","white");
+                });
+                $("button").attr("class","gray");
+                $("#btn1").on("mouseover",function(){
+                    $("button").attr("class","gray");
+                    $(this).attr("class","red");
+                });
+                $("button").attr("class","gray");
+                $("#btn2").on("mouseover",function(){
+                    $("button").attr("class","gray");
+                    $(this).attr("class","red");
+                });
+                $("button").attr("class","gray");
+                $("#btn3").on("mouseover",function(){
+                    $("button").attr("class","gray");
+                    $(this).attr("class","red");
+                });
+                $("button").attr("class","gray");
+                $("#btn1").on("dblclick",function(){
+                    $("button").attr("class","gray");
+                    $(this).attr("class","yellow");
+                });
+                $("button").attr("class","gray");
+                $("#btn2").on("dblclick",function(){
+                    $("button").attr("class","gray");
+                    $(this).attr("class","yellow");
+                });
+                $("button").attr("class","gray");
+                $("#btn3").on("dblclick",function(){
+                    $("button").attr("class","gray");
+                    $(this).attr("class","yellow");
+                });
+                
+            });
+
+        </script>
+    </body>
+</html>

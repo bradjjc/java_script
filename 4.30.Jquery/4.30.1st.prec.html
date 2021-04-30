@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <style>
+        .hidden {
+            display: none;
+        }
+        .view {
+            display: block;
+        }
+    </style>
+    <body>
+
+        <div id="main">
+            <div id="text"></div>
+            <button id="red">빨강</button>
+            <button id="blue">파랑</button>
+            <button id="green">초록</button>
+            <button id="btn">추가</button>
+        </div>
+
+        <script>
+            var kk;
+            function gar() {
+                var input = prompt('택스트값을 입력해주세요');
+                kk = input;
+                console.log(input);
+                if (input != '') {
+                    $("#main").attr("class", "view");
+                    $("#text").text(input);
+                } else {
+                    gar();
+                }
+            }
+
+            $(function () {
+                $("#main").attr("class", "hidden");
+
+                gar();
+
+                var codes = kk;
+                $("#btn").on("click", function(){
+                    console.log(codes);
+                    console.log(kk);
+                    $("#text").append(codes);
+                });
+
+                $("#red").on("click", function () {
+                    alert("빨간색으로 면경됩니다")
+                    $("#text").css("color", "#ff0000");
+                });
+
+                $("#blue").on("click", function () {
+                    alert("파란색으로 면경됩니다")
+                    $("#text").css("color", "#0000ff");
+                });
+
+                $("#green").on("click", function () {
+                    alert("초록색으로 면경됩니다")
+                    $("#text").css("color", "#00ff00");
+                });
+            });
+        </script>
+    </body>
+</html>
