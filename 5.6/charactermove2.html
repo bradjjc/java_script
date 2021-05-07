@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>Document</title>
+        <script
+            src="https://code.jquery.com/jquery-1.12.4.js"
+            integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+            crossorigin="anonymous"></script>
+        <style>
+       </style>
+    </head>
+    <body>
+        <div id="div1"style="display: inline-block; position: absolute; width:200px; 
+        height:200px; background-image: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/29f9aea9-3313-4b3f-85b6-43997f509899/de5ula4-05413fae-779e-4fdd-8b28-0ced683a27f9.png/v1/fill/w_500,h_500,strp/whiskeyding0_among_us_character_by_geminigold27_de5ula4-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTAwIiwicGF0aCI6IlwvZlwvMjlmOWFlYTktMzMxMy00YjNmLTg1YjYtNDM5OTdmNTA5ODk5XC9kZTV1bGE0LTA1NDEzZmFlLTc3OWUtNGZkZC04YjI4LTBjZWQ2ODNhMjdmOS5wbmciLCJ3aWR0aCI6Ijw9NTAwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.kiziU7U5eRIwDZ2QBlELUvZGy-wmzIBx10lCZv1uIYQ);">
+        </div>
+            <div style="position: absolute; top: 400px; left: 350px;">
+    </div>
+        <script>
+            $(function(){
+                // $("div").hide(5000);
+                // $("div").show(5000);
+                // $("div").fadeOut(5000);
+                // $("div").fadeIn(5000);
+                // $("div").slideUp(5000);
+                // $("div").slideDown(5000);
+      $("body").keydown(function(e){
+          if(e.key == "ArrowLeft") {
+              $("#div1").animate({left:"-=100px"},20);
+          }
+          if(e.key == "ArrowRight") {
+              $("#div1").animate({left:"+=100px"},20);
+          }
+          if(e.key == "ArrowUp") {
+              $("#div1").animate({top:"-=100px"},20);
+          }
+          if(e.key == "ArrowDown") {
+              $("#div1").animate({top:"+=100px"},20);
+          }
+      });
+             })
+        </script>
+    </body>
+</html>

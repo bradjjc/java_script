@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <style></style>
+    <body>
+        <table>
+            <tr>
+                <td>아이디</td>
+                <td><input type="text" id="input1"></td>
+            </tr>
+            <tr>
+                <td>비밀번호</td>
+                <td><input type="password" id="input2"></td>
+            </tr>
+            <tr>
+                <td>성별</td>
+                <td align="center"><input type="radio" name="sex" value="male">
+                    남자
+                    <input type="radio" name="sex" value="female">
+                    여자
+                </td>
+            </tr>
+            <tr>
+                <td>직업</td>
+                <td>
+                    <select id="job" name="job">
+                        <option value=""></option>
+                        <option value="1">학생</option>
+                        <option value="2">직장인</option>
+                        <option value="3">요식업</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>취미</td>
+                <td>
+                    <td align="center"><input type="checkbox" name="hobby" value="1">
+                        개발
+                        <input type="checkbox" name="hobby" value="1">
+                        게임
+                        <input type="checkbox" name="hobby" value="1">
+                        낚시 <br />
+                        <input type="checkbox" name="hobby" value="1">
+                        운동
+                        <input type="checkbox" name="hobby" value="1">
+                        독서
+                        <input type="checkbox" name="hobby" value="1">
+                        음악감상
+                    </td>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="reset" value="초기화">
+                    <button>회원가입</button>
+                </td>
+            </tr>
+        </table>
+
+        <script>
+            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+            var email = document
+                .getElementById('useremail')
+                .value;
+            if (email == '' || !re.test($email)) {
+                alert("올바른 이메일 주소를 입력하세요")
+                return false;
+            }
+
+            ​
+        </script>
+
+    </body>
