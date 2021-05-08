@@ -1,0 +1,136 @@
+<html>
+    <head>
+        <title>project</title>
+        <script
+            src="https://code.jquery.com/jquery-1.12.4.js"
+            integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+            crossorigin="anonymous"></script>
+    </head>
+    <style>
+        .page {
+            border: 2px solid blue;
+            position: relative;
+            display: inline-block;
+            height: 100%;
+            width: 100%;
+            background-image: url(img.jpg);
+            background-color: rgb(255, 255, 188);
+            background-size: contain;
+        }
+        #preview {
+            border: 1px dashed black;
+            height: 400px;
+            width: 300px;
+            margin-top: 50px;
+            margin-left: 40%;
+            display: block;
+        }
+        input {
+            margin-left: 42%;
+            margin-top: 10px;
+            font-size: 20px;
+        }
+        button {
+            background-color: rgb(247, 247, 165);
+            font-size: 20px;
+            border-radius: 50px;
+        }
+        #box1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        #box2 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .upperbox {
+            display: none;
+            border: 1px solid blue;
+            width: 150px;
+            height: 70px;
+            margin-left: 15px;
+        }
+        .lowerbox {
+            display: none;
+            border: 1px solid blue;
+            width: 220px;
+            height: 70px;
+            margin-left: 15px;
+        }
+
+
+    </style>
+    <body>
+        
+        <div class="page">
+            <div><img src="" id="preview"></div>
+            <div><input type="file" id="img_select"></div>
+            <div class="box" id="box1">
+                <button class="upperbox" id="btn1">회색으로</button>
+                <button class="upperbox" id="btn2">흐리게</button>
+                <button class="upperbox" id="btn3">그림자</button>
+                <button class="upperbox" id="btn4">50% 투명</button>
+            </div>
+            <div class="box" id="box2">
+                <button class="lowerbox" id="btn5">좌로 90도 회전</button>
+                <button class="lowerbox" id="btn6">우로 90도 회전</button>
+                <button class="lowerbox" id="btn7">이미지 초기화</button>
+            </div>
+        </div>
+
+        <script>
+            $("#img_select").change(function img() {
+                ext = $(this)
+                    .val()
+                    .split(".")
+                    .pop()
+                    .toLowerCase();
+                if ($.inArray(ext, ["gif", "png", "jpg", "jpeg"]) == -1) {
+                    alert("이미지 파일이 아닙니다! (gif, png, jpg, jpeg 만 업로드 가능)");
+                    img();
+                } else {
+                    setImageFromFile(this, "#preview");
+                };
+            });
+            function setImageFromFile(input, expression) {
+
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $(expression).attr("src", e.target.result);
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                    $("#preview").css("border","none")
+                    $(".upperbox").show();
+                    $(".lowerbox").show();
+                };
+            };
+            $(function change(){
+
+                    $("#btn1").on("click",function(){
+                        $("#preview").css("-webkit-filter","grayscale(100%)");
+                    });
+                    $("#btn2").on("click",function(){
+                        $("#preview").css("-webkit-filter","blur(5px)");
+                    });
+                    $("#btn3").on("click",function(){
+                        $("#preview").css("box-shadow","5px 5px 5px 5px");
+                    });
+                    $("#btn4").on("click",function(){
+                        $("#preview").css("opacity","50%");
+                    });
+                    $("#btn5").on("click",function(){
+                        $("#preview").css("transform","rotate(90deg)");
+                    });
+                    $("#btn6").on("click",function(){
+                        $("#preview").css("transform","rotate(270deg)");
+                    });
+                    $("#btn7").on("click",function(){
+                        $("#preview").css({"filter": "","box-shadow": "","opacity": "","transform": ""});
+                    });
+                    
+            });
+
+        </script>
+    </body>
+</html>
