@@ -1,0 +1,225 @@
+<html>
+    <head>
+        <title>
+            javascript
+        </title>
+    </head>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <style>
+
+        img {
+            width: 80px;
+            height: 80px;
+        }
+
+        #marioimg {
+            width: 100px;
+            height: 100px;
+        } 
+        #bg {
+            z-index: 10;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            height: 90%;
+            border: 1px solid #000; 
+        } 
+        #main {
+            overflow: hidden;
+            z-index: 100;
+            position: absolute;
+            top:0px;
+            display: inline-block;
+            width: 100%;
+            height: 90%;
+            border: 1px solid #000;  
+            background: white;
+        } 
+
+        .ch {
+            position: absolute;
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+        }
+
+        #mario {
+            position: absolute;
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+        }
+
+        .sliding-background {
+        background: url("bg.jpeg") repeat-x;
+        background-size: 50% 100%;
+        height: 100%;
+        width: 5076px;
+        animation: slide 30s linear infinite;
+        }
+
+        #btn
+        {
+            display: inline-block;
+            width:200px;
+            height:100px;
+            line-height: 100px;
+            position: absolute;
+            left:40%;
+            top:40%;
+        }
+
+        @keyframes slide{
+        0%{
+            transform: translate3d(0, 0, 0);
+        }
+        100%{
+            transform: translate3d(-1692px, 0, 0);
+        }
+        }
+    </style>
+    <body>
+
+        <div id="bg">
+            <div class="sliding-background"></div>
+            <div class="ch" id="mario"><img id="marioimg" src="man.gif"></div>
+            <div class="ch" id="killer"><img src="killer.jpeg"></div>
+            <div class="ch" id="gb"><img src="gb.gif"></div>
+        </div> 
+        <div id="main">
+            <button id="btn">게임시작</button>
+        </div>
+
+        점수 :<span id="score" ></span> 
+
+        <script>
+            var jumping = 0;
+            var alive = 0;
+            var misiling = 0;
+            var score = 0;
+            var start = 0;
+
+            var timmer = setInterval(function () { 
+
+                if(start == 1)
+                {
+
+                    let mario_bottom = parseInt($("#mario").css("bottom"), 10);
+                    let gb_left = parseInt($("#gb").css("left"), 10);
+                    let killer_left = parseInt($("#killer").css("left"), 10);
+                    
+                    if (mario_bottom < 50 && gb_left < 100 && gb_left > 50 && alive == 0) {
+                        alert("마리오 사망");
+                        $("#mario").hide();
+                        alive = 1;
+                    }
+
+                    if((gb_left - killer_left) < 50 && misiling == 1)
+                    { 
+                        
+                        $("#killer").stop(); 
+                        $("#killer").hide();
+                        misiling = 0;
+
+                        $("#gb").stop(); 
+                        $("#gb").hide(); 
+                        gb_default();
+
+                        scoreplus(200);
+                    }
+                }
+
+
+            }, 100)
+
+            function mario_default() {
+                $("#mario").show();
+                $("#mario").css({left: "0px", bottom: "10px"});
+            }
+
+            function scoreplus(num)
+            {
+                score = score + num;
+                $("#score").text(score);
+            }
+
+            function gb_default() {
+                let movspeed = Math.ceil(Math.random() * 10000);
+                if (movspeed < 4000) {
+                    movspeed = 4000;
+                }
+                if (movspeed > 8000) {
+                    movspeed = 8000;
+                }
+                $("#gb").show();
+                $("#gb").css({right: "0px", bottom: "10px"});
+                $("#gb").animate({
+                    right: "100%"
+                }, movspeed, function () {
+                    if(alive == 0)
+                    {
+                        scoreplus(100);
+                    }
+                    gb_default();
+                });
+            }
+
+            function killer_default() {
+                if (misiling == 0 && alive == 0) {
+                    misiling = 1;
+                    $("#killer").show();
+                    $("#killer").css({left: "100px", bottom: "10px"});
+                    $("#killer").animate({
+                        left: "100%"
+                    }, 1000, function () {
+                        misiling = 0;
+                    });
+                }
+            }
+
+            function startnow()
+            {
+
+                $("body").keydown(function (event) {
+                    if (event.keyCode == 13) {
+                        killer_default();
+                    }
+                    if (event.keyCode == 32) {
+                        if (jumping == 0) {
+                            jumping = 1;
+                            $("#mario").animate({
+                                bottom: "200px"
+                            }, 500);
+                            $("#mario").animate({
+                                bottom: "0px"
+                            }, 500, function () {
+                                jumping = 0;
+                            });
+                        }
+                    }
+                });
+
+
+                mario_default();
+                gb_default();
+            }
+
+
+            $(function () {
+
+                $("#mario").hide();
+                $("#killer").hide();
+                $("#gb").hide();
+
+                $("button").on("click",function(){
+                    $("#main").hide();
+                    start = 1;
+                    startnow();
+
+                });
+
+            });
+        </script>
+
+    </body>
+</html>
