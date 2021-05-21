@@ -3,8 +3,7 @@
         <title></title>
     </head>
     <style>
-        span
-        {
+        span {
             display: inline-block;
             width: 200px;
             height: 80px;
@@ -14,23 +13,18 @@
             border: 1px solid black;
             cursor: pointer;
         }
-        .gray
-        {
+        .gray {
             background-color: gray;
             color: white;
         }
-        .over
-        {
+        .over {
             background-color: white;
             color: black;
         }
-        .click
-        {
+        .click {
             background-color: red;
             color: black;
         }
-
-
     </style>
 
     <body onload="gray();">
@@ -38,30 +32,32 @@
         <span id="bt2" onmouseover="clicker('bt2');" onclick="clred('bt2')">CSS</span>
         <span id="bt3" onmouseover="clicker('bt3');" onclick="clred('bt3')">javastript</span>
 
-
         <script>
-            function gray()
-            {
-                document.getElementById("bt1").className = "gray";
-                document.getElementById("bt2").className = "gray";
-                document.getElementById("bt3").className = "gray";
+            function gray() {
+                document
+                    .getElementById("bt1")
+                    .className = "gray";
+                document
+                    .getElementById("bt2")
+                    .className = "gray";
+                document
+                    .getElementById("bt3")
+                    .className = "gray";
             }
 
-            function clicker(str)
-            {
+            function clicker(str) {
                 gray();
-                document.getElementById(str).className = "over";
+                document
+                    .getElementById(str)
+                    .className = "over";
             }
 
-            function clred(str)
-            {
+            function clred(str) {
                 gray();
-                document.getElementById(str).className = "click";
+                document
+                    .getElementById(str)
+                    .className = "click";
             }
-
-
-
-            
         </script>
     </body>
 </html>
